@@ -88,11 +88,6 @@ void RS200Sensor::process_byte_(uint8_t b) {
     uint8_t status = frame_[2];
     this->publish_state(status);
     ESP_LOGD(TAG, "Rain status=%u raw=0x%04X", status, data);
-  } else if (flag == 0x90) {  // Example: system status
-    if (this->system_status_sensor_ != nullptr) {
-      this->system_status_sensor_->publish_state(data);
-      ESP_LOGD(TAG, "System status=%u", data);
-    }
   } else {
     ESP_LOGV(TAG, "Unhandled flag 0x%02X data=0x%04X", flag, data);
   }
