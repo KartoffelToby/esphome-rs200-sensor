@@ -4,11 +4,6 @@ from esphome.components import uart, sensor
 from esphome.const import (
     CONF_ID,
     CONF_UART_ID,
-    CONF_NAME,
-    ICON_WATER,
-    ICON_ALERT,
-    UNIT_EMPTY,
-    DEVICE_CLASS_EMPTY,
 )
 
 DEPENDENCIES = ["uart"]
@@ -23,16 +18,14 @@ CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(RS200Component),
     cv.Required(CONF_UART_ID): cv.use_id(uart.UARTComponent),
     cv.Required(CONF_RAINFALL): sensor.sensor_schema(
-        unit_of_measurement=UNIT_EMPTY,
-        icon=ICON_WATER,
+        unit_of_measurement="",
+        icon="mdi:water",
         accuracy_decimals=0,
-        device_class=DEVICE_CLASS_EMPTY,
     ),
     cv.Required(CONF_SYSTEM): sensor.sensor_schema(
-        unit_of_measurement=UNIT_EMPTY,
-        icon=ICON_ALERT,
+        unit_of_measurement="",
+        icon="mdi:alert",
         accuracy_decimals=0,
-        device_class=DEVICE_CLASS_EMPTY,
     ),
 }).extend(cv.polling_component_schema("5s"))
 
