@@ -1,4 +1,5 @@
 #include "rs200.h"
+#include "esphome/core/log.h"
 
 namespace esphome {
 namespace rs200 {
